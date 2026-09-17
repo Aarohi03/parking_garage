@@ -54,6 +54,16 @@ For development with automatic restart:
 npm run dev
 ```
 
+## Debugging
+
+- Server errors and request errors are printed in the terminal running the app.
+- Browser-side errors can be checked in the browser developer console.
+- Run `node --check server.js` to check backend syntax.
+- Run `node --check public/app.js` to check frontend JavaScript syntax.
+- Use the API endpoint examples in this README with `curl` or a REST client.
+- To reset the local demo database, stop the server, delete `parking.db`, and
+	run `npm start` again. The database and sample data will be recreated.
+
 ## Tech Stack
 
 - Frontend: HTML, CSS, and Vanilla JavaScript

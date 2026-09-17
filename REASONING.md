@@ -19,6 +19,28 @@ The project has three extra twists:
 - T6 transfers an open stay to a new plate without changing the spot or entry
   time.
 
+## Thought Process
+
+I first separated the garage inventory from individual parking visits. A spot
+needs its own record because it has a type, level, and occupied state. A stay
+needs a separate record because the same spot can be used by many cars over
+time.
+
+Next, I kept fee calculation on the server so the browser cannot change the
+amount. When the rate-card twist was added, the hardcoded fee values were
+replaced with saved rates from the database. The check-in and checkout updates
+were placed in transactions so the stay and spot do not become inconsistent.
+
+The clock requirement was implemented by reusing the same fee calculation and
+closing only open stays older than 24 hours. The transfer requirement was
+implemented as a plate-only update to the existing open stay, so the spot and
+entry time do not change.
+
+After each major change, I checked the syntax and diagnostics, tested the API,
+and checked the related browser controls. Failed test commands were corrected
+when the shell changed JavaScript expressions, and the application behavior was
+then verified with simpler direct requests.
+
 ## Database Design
 
 The project uses SQLite through Node's built-in SQLite module.
