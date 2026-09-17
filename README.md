@@ -54,6 +54,15 @@ For development with automatic restart:
 npm run dev
 ```
 
+## Tech Stack
+
+- Frontend: HTML, CSS, and Vanilla JavaScript
+- Backend: Node.js built-in HTTP server
+- Database: SQLite using Node's built-in `node:sqlite` module
+- API Style: REST APIs
+- Development Tools: Visual Studio Code and GitHub Copilot
+- Version Control: Git and GitHub
+
 ## Database
 
 The application uses SQLite in `parking.db`.
