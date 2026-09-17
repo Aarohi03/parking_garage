@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ParkWise | Garage operations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#home">Park<span>Wise</span></a>
+      <nav>
+        <a href="#features">Features</a><a href="#attendant">Attendant desk</a>
+      </nav>
+      <button id="loginBtn" class="outline">Sign in</button>
+    </header>
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <p class="eyebrow">Parking, made orderly</p>
+          <h1>The calm, capable centre of a busy garage.</h1>
+          <p class="lead">
+            ParkWise gives attendants live spot availability, accurate tiered
+            billing and instant plate lookup—so every arrival and departure
+            keeps moving.
+          </p>
+          <a class="button" href="#attendant">Open attendant desk →</a>
+        </div>
+        <aside class="rate-card">
+          <p>Clear, fair pricing</p>
+          <strong>₹200</strong><small>first hour</small>
+          <hr />
+          <b>₹120</b> each additional hour<br /><b>₹2,400</b> daily maximum<br /><em
+            >Part-hours round up</em
+          >
+        </aside>
+      </section>
+      <section id="features" class="features">
+        <article>
+          <span>⚡</span>
+          <h2>Live availability</h2>
+          <p>
+            Check compact, standard and EV charging spaces before a driver
+            reaches the ramp.
+          </p>
+        </article>
+        <article>
+          <span>⌕</span>
+          <h2>Find any plate</h2>
+          <p>
+            Search a growing parking log in moments, with sort and pagination
+            built in.
+          </p>
+        </article>
+        <article>
+          <span>✓</span>
+          <h2>Billing you can trust</h2>
+          <p>
+            Tiered hourly pricing, rounded stays and a daily cap calculated
+            automatically.
+          </p>
+        </article>
+      </section>
+      <section id="attendant" class="desk">
+        <div class="section-title">
+          <p class="eyebrow">Attendant desk</p>
+          <h2>Today’s garage, at a glance.</h2>
+          <button id="refresh" class="outline">Refresh</button>
+        </div>
+        <div id="availability" class="availability"></div>
+        <div class="rate-import">
+          <div>
+            <p class="eyebrow">Rate-card import</p>
+            <h3>Keep billing rates current.</h3>
+            <p>Paste CSV rows with vehicle type, first hour, additional hour and daily cap.</p>
+          </div>
+          <form id="rateForm">
+            <textarea id="rateText" rows="4" placeholder="vehicle_type,first_hour,additional_hour,daily_cap&#10;compact,₹200,₹120,₹2400&#10;standard,200,120,2400&#10;EV,250,150,3000&#10;bad row"></textarea>
+            <button class="button">Import cleaned rates</button>
+            <p id="rateMsg" class="message"></p>
+          </form>
+          <div id="rates" class="rates-table"></div>
+        </div>
+        <div class="desk-grid">
+          <form id="checkin">
+            <h3>Check in vehicle</h3>
+            <label
+              >License plate<input
+                name="plate"
+                placeholder="MH 01 AB 1234"
+                required /></label
+            ><label
+              >Driver name<input
+                name="driver_name"
+                placeholder="Driver name"
+                required /></label
+            ><label
+              >Vehicle type<select name="vehicle_type">
+                <option value="standard">Standard</option>
+                <option value="compact">Compact</option>
+                <option value="ev">EV (charger required)</option>
+              </select></label
+            ><label
+              >Assign available spot<select
+                name="spot_id"
+                id="spotSelect"
+                required
+              ></select></label
+            ><button class="button">Check in →</button>
+            <p id="checkinMsg" class="message"></p>
+          </form>
+          <div class="log">
+            <div class="log-head">
+              <div>
+                <h3>Parking log</h3>
+                <p>Search, sort and manage active stays.</p>
+              </div>
+              <input id="search" placeholder="Search plate" />
+            </div>
+            <div class="filters">
+              <select id="status">
+                <option value="all">All stays</option>
+                <option value="active">Currently parked</option>
+                <option value="closed">Checked out</option></select
+              ><select id="sort">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+              </select>
+            </div>
+            <div id="stays"></div>
+            <div class="pager">
+              <button id="previous" class="outline">← Previous</button
+              ><span id="pageText"></span
+              ><button id="next" class="outline">Next →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="next">
+        <p class="eyebrow">What’s next</p>
+        <h2>Built for the desk today. Ready to grow tomorrow.</h2>
+        <div>
+          <span>01 — Pre-book a spot</span
+          ><span>02 — Digital payment receipts</span
+          ><span>03 — Occupancy analytics</span>
+        </div>
+      </section>
+    </main>
+    <footer>ParkWise · Made for every garage, not just one.</footer>
+    <dialog id="auth">
+      <button class="close" id="closeAuth">×</button>
+      <h2>Attendant access</h2>
+      <p>Sign in or create an account to associate check-ins with your desk.</p>
+      <form id="authForm">
+        <label
+          >Name
+          <input name="name" placeholder="Only needed to register" /></label
+        ><label>Email <input name="email" type="email" required /></label
+        ><label
+          >Password <input name="password" type="password" required /></label
+        ><button class="button">Continue</button>
+      </form>
+      <button id="toggleAuth" class="link">New here? Create account</button>
+      <p id="authMsg" class="message"></p>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "name": "ParkWise Garage",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-24-bookworm"
+}
